@@ -79,3 +79,6 @@ this distance is wrong. This inspired me to create a program to measure the real
 thing this program assumes is that the Earth is a perfect sphere with a radius of 6,371 km.
 
 [Linkedin](https://www.linkedin.com/in/cortes205/)
+
+## APIs Used
+* OpenStreetMap - JXMapViewer2
