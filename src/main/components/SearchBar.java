@@ -31,6 +31,12 @@ public class SearchBar extends JTextField implements FocusListener, KeyListener 
 		return input;
 	}
 	
+	public void setInput() {
+		input = this.getText().strip();
+		this.setText("");
+		frame.requestFocus();
+	}
+	
 	public void refreshSize() {
 		width = ((double) frame.getWidth()) / 3;
 		height = ((double) frame.getHeight()) / 12.5;
@@ -67,9 +73,7 @@ public class SearchBar extends JTextField implements FocusListener, KeyListener 
 	public void keyReleased(KeyEvent e) {
 		if (e.getSource() == this) {
 			if (e.getKeyChar() == KeyEvent.VK_ENTER) {
-				input = this.getText().strip();
-				this.setText("");
-				frame.requestFocus();
+				setInput();
 			}
 		}
 	}
