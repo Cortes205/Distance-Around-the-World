@@ -9,7 +9,6 @@ put onto Github to track progress and view older versions.
 
 Current Goals:
 
-* Fix the search bar and button that are hidden by the map
 * Bring functionality to the map by using the search bar
 to locate places (web scraping will be used for place info and autofilling)
 * Allow the user to choose two places on the map
