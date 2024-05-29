@@ -1,8 +1,18 @@
 package main;
-import main.components.*;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
+import main.components.Map;
+import main.components.SearchBar;
+import scraping.WebScraper;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 @SuppressWarnings("serial")
 public class App extends JFrame implements ComponentListener, ActionListener {
@@ -45,6 +55,10 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 		this.setVisible(true);
 	}
 	
+	public void runSearch() {
+		new WebScraper(search.getInput());
+	}
+	
 	@Override
 	public void componentResized(ComponentEvent e) {
 		if (e.getSource() == this) {
@@ -62,7 +76,6 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 		if (e.getSource() == enter) {
 			search.setInput();
 		}
-		
 	}
 	
 	@Override

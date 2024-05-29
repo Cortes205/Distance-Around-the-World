@@ -1,46 +1,20 @@
 package main.components;
-import java.awt.event.*;
-import org.jxmapviewer.*;
-import org.jxmapviewer.viewer.*;
+
+import org.jxmapviewer.JXMapKit;
+import org.jxmapviewer.viewer.GeoPosition;
 
 @SuppressWarnings("serial")
-public class Map extends JXMapKit implements MouseListener {
+public class Map extends JXMapKit {
 
 	public Map() {
 		this.setZoomButtonsVisible(true);
+		this.setMiniMapVisible(false);
 		// City of Toronto as Starting Location
-		this.setAddressLocation(new GeoPosition(43.653225, -79.383186));	
-		this.addMouseListener(this);
+		this.setAddressLocation(new GeoPosition(43.653225, -79.383186));
 	}
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		if (e.getSource() == this) {
-			this.requestFocus();
-		}
+	
+	public void setWaypoint(double lat, double lon) {
+		this.setAddressLocation(new GeoPosition(lat, lon));
+		this.setZoom(3);
 	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -1,22 +1,31 @@
 package main.components;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
+import main.App;
+
+import javax.swing.JTextField;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 @SuppressWarnings("serial")
 public class SearchBar extends JTextField implements FocusListener, KeyListener {
 
-	private JFrame frame;
+	private App frame;
 	
 	private String placeholder;
 	private String input;
 	
 	private double width;
 	private double height;
-	private final int minWidth = 230;
-	private final int minHeight = 50;
+	private final int MINWIDTH = 230;
+	private final int MINHEIGHT = 50;
 	
-	public SearchBar(JFrame frame, String placeholder, int x, int y) {
+	public SearchBar(App frame, String placeholder, int x, int y) {
 		this.frame = frame;
 		this.placeholder = placeholder;
 		
@@ -33,20 +42,21 @@ public class SearchBar extends JTextField implements FocusListener, KeyListener 
 	
 	public void setInput() {
 		input = this.getText().strip();
-		this.setText("");
+		this.setText(placeholder);
 		frame.requestFocus();
+		frame.runSearch();
 	}
 	
 	public void refreshSize() {
 		width = ((double) frame.getWidth()) / 3;
 		height = ((double) frame.getHeight()) / 12.5;
 		
-		if (height < minHeight) {
-			height = minHeight;
+		if (height < MINHEIGHT) {
+			height = MINHEIGHT;
 		}
 		
-		if (width < minWidth) {
-			width = minWidth;
+		if (width < MINWIDTH) {
+			width = MINWIDTH;
 		}
 		
 		this.setFont(new Font("Arial", Font.PLAIN, (int) height / 2));
