@@ -42,7 +42,7 @@ Ensure you have the following:
 * Maven
 * Java
 
-To run this program, use the commands:
+To run this program, use the following commands:
 
 ```sh
 mvn compile
@@ -77,4 +77,4 @@ thing this program assumes is that the Earth is a perfect sphere with a radius o
 
 ## APIs Used
 * OpenStreetMap - JXMapViewer2
-* JSoup
+* Selenium
