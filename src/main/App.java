@@ -56,7 +56,7 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 	}
 	
 	public void runSearch() {
-		new WebScraper(search.getInput());
+		new WebScraper(map, search.getInput());
 	}
 	
 	@Override

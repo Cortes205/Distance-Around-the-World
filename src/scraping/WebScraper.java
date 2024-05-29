@@ -1,31 +1,49 @@
 package scraping;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
+import main.components.Map;
 
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebScraper {
 	
-	private Document doc;
+	private Map map;
+	
+	private WebDriver page;
+	
+	public WebScraper(Map map, String input) {
+		this.map = map;
 
-	public WebScraper(String input) {
-		try {
-			doc = Jsoup.connect("https://www.gps-coordinates.net/").userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36").header("Accept-Language", "*").get();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("--headless=new");
+		options.addArguments("--deny-permission-prompts");
+		options.addArguments("--disable-popup-blocking");
+		page = new ChromeDriver(options);
+		page.get("https://www.gps-coordinates.net/");
 		
-		Element search = doc.getElementById("address");
-		Element button = doc.getElementsByClass("btn btn-primary").first();
+		WebElement search = page.findElement(By.id("address"));
+		search.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		search.clear();
+		search.sendKeys(input);
 		
-		search.val(input);
+		WebElement button = page.findElement(By.cssSelector(".btn.btn-primary"));
+		button.click();
 		
-		System.out.println(search.val());
+		WebElement latitudeField = page.findElement(By.id("latitude"));
+		System.out.println(latitudeField.getAttribute("value"));
+		
+//		double latitude = Double.parseDouble(latitudeField.getText());
+//		
+//		WebElement longitudeField = page.findElement(By.id("latitude"));
+//		double longitude = Double.parseDouble(longitudeField.getText());
+		
+//		System.out.println(latitude + " " + longitude);
+		
+//		map.setWaypoint(latitude, longitude);
 	}
 
 }
