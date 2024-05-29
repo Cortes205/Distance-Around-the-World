@@ -44,7 +44,10 @@ public class SearchBar extends JTextField implements FocusListener, KeyListener 
 		input = this.getText().strip();
 		this.setText(placeholder);
 		frame.requestFocus();
-		frame.runSearch();
+		
+		if (!input.equals("") && !input.equals(placeholder)) {
+			frame.runSearch();
+		}
 	}
 	
 	public void refreshSize() {
