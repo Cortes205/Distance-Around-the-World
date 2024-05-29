@@ -31,8 +31,7 @@ git clone https://github.com/Cortes205/Distance-Around-the-World
 or you can download it manually as a zipfile.
 
 ### Requirements
-Requirements are located in the dependencies folder and will automatically
-be loaded when building the program
+Requirements are all located in pom.xml and are automatically installed when building the application via Maven
 
 ## Usage
 
@@ -81,3 +80,4 @@ thing this program assumes is that the Earth is a perfect sphere with a radius o
 
 ## APIs Used
 * OpenStreetMap - JXMapViewer2
+* JSoup
