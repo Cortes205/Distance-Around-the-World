@@ -15,7 +15,6 @@ to locate places (web scraping will be used for place info and autofilling)
 * When choosing each place, save data on longitude and latitude
 * Measure the real distance between two places on the map, then
 subtract it from the full distance around the Earth (Linear Algebra will play a role in this)
-* Fix execution via Maven
 
 ## Setup
 
@@ -36,10 +35,6 @@ Requirements are all located in pom.xml and are automatically installed when bui
 ## Usage
 
 ### Execute
-*********Disclaimer******
-<br>**The following execution is currently not working and is 
-better executed through an IDE (ex: eclipse)**
-
 Open the terminal in the program's directory
 
 Ensure you have the following:
@@ -47,25 +42,27 @@ Ensure you have the following:
 * Maven
 * Java
 
-To run this program, use the command:
+To run this program, use the commands:
 
 ```sh
 mvn compile
 ```
 
-then
-
 ```sh
 mvn package
 ```
-
-and finally,
 
 ```sh
 java -jar target/Distance-Around-the-World-0.1.0.jar
 ```
 
+The first two commands will build the program and save it in a folder named *"target"*. 
+They will also create a file named *"dependency-reduced-pom.xml"* in the root of the project.
+
+The last command will execute the correct jar file to run the program.
+
 ### Runtime
+******To be written once the program is fully functional***
 
 
 ## About This Project
