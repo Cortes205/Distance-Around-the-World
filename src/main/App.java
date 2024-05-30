@@ -23,6 +23,8 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 	private Map map;
 	
 	private JLayeredPane screen;
+	
+	private WebScraper gps;
 
 	public App() {
 		
@@ -56,7 +58,7 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 	}
 	
 	public void runSearch() {
-		new WebScraper(map, search.getInput());
+		gps = new WebScraper(map, search.getInput());
 	}
 	
 	@Override
