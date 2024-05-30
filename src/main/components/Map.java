@@ -15,6 +15,6 @@ public class Map extends JXMapKit {
 	
 	public void setWaypoint(double lat, double lon) {
 		this.setAddressLocation(new GeoPosition(lat, lon));
-		this.setZoom(2);
+		this.setZoom(5);
 	}
 }
