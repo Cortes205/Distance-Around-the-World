@@ -9,8 +9,9 @@ put onto Github to track progress and view older versions.
 
 Current Goals:
 
-* Bring functionality to the map by using the search bar
-to locate places (web scraping will be used for place info and autofilling)
+* Place a waypoint on the user's searched place (either through jxmapviewer or images with swing)
+* Fix or compromise for slow loading times when searching on the map
+* Autofill feature for user input
 * Allow the user to choose two places on the map
 * When choosing each place, save data on longitude and latitude
 * Measure the real distance between two places on the map, then
@@ -21,7 +22,7 @@ subtract it from the full distance around the Earth (Linear Algebra will play a 
 ### Project Folder
 Open your computer's terminal and cd to a directory of your choice.
 
-Ensure git is installed on your system, then clone this repository using:
+Ensure [git](https://git-scm.com/) is installed on your system, then clone this repository using:
 
 ```sh
 git clone https://github.com/Cortes205/Distance-Around-the-World
@@ -39,8 +40,8 @@ Open the terminal in the program's directory
 
 Ensure you have the following:
 * An internet connection
-* Maven
-* Java
+* [Maven](https://maven.apache.org/)
+* [Java](https://www.oracle.com/ca-en/java/technologies/downloads/)
 
 To run this program, use the following commands:
 
@@ -76,5 +77,8 @@ thing this program assumes is that the Earth is a perfect sphere with a radius o
 [Linkedin](https://www.linkedin.com/in/cortes205/)
 
 ## APIs Used
-* OpenStreetMap - JXMapViewer2
-* Selenium
+* [OpenStreetMap](https://www.openstreetmap.org/#map=10/43.5908/-79.4270) - [JXMapViewer2](https://github.com/msteiger/jxmapviewer2)
+* [Selenium](https://www.selenium.dev/)
+
+## Website Resources
+* [GPS Coordinates](https://www.gps-coordinates.net/)
