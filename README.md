@@ -9,13 +9,13 @@ put onto Github to track progress and view older versions.
 
 Current Goals:
 
-* Place a waypoint on the user's searched place (either through jxmapviewer or images with swing)
-* Fix or compromise for slow loading times when searching on the map
-* Autofill feature for user input
-* Allow the user to choose two places on the map
-* When choosing each place, save data on longitude and latitude
 * Measure the real distance between two places on the map, then
 subtract it from the full distance around the Earth (Linear Algebra will play a role in this)
+* Make the display of saving places prettier
+* Make a remove button after adding a place
+* Fix bug that deletes saved locations after too many searches
+* Fix or compromise for slow loading times when searching on the map
+* Autofill feature for user input
 
 ## Setup
 
