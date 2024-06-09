@@ -38,8 +38,8 @@ public class Map extends JXMapKit {
 		
 		info = new OSMTileFactoryInfo();
 		info.setDefaultZoomLevel(10);
-        tileFactory = new DefaultTileFactory(info);
-        this.getMainMap().setTileFactory(tileFactory);
+		tileFactory = new DefaultTileFactory(info);
+		this.getMainMap().setTileFactory(tileFactory);
 		
 		savedLastLocations = false;
 		locationShown = false;
@@ -47,8 +47,8 @@ public class Map extends JXMapKit {
 		titles = new LinkedList<String>();
 		
 		// DELETE AFTER DEBUG
-		locations.add(new GeoPosition(43.653225, -79.383186));
-		locations.add(new GeoPosition(40.741895, -73.989308));
+//		locations.add(new GeoPosition(43.653225, -79.383186));
+//		locations.add(new GeoPosition(40.741895, -73.989308));
 	}
 	
 	public void setWaypoint(double lat, double lon, String title) {
@@ -89,8 +89,8 @@ public class Map extends JXMapKit {
 		List<Painter<JXMapViewer>> painters = new ArrayList<Painter<JXMapViewer>>();
 		painters.add(waypointPainter);
 
-	    CompoundPainter<JXMapViewer> painter = new CompoundPainter<JXMapViewer>(painters);
-	    this.getMainMap().setOverlayPainter(painter);
+		CompoundPainter<JXMapViewer> painter = new CompoundPainter<JXMapViewer>(painters);
+		this.getMainMap().setOverlayPainter(painter);
 	}
 	
 	public void setSaved(boolean saved) {

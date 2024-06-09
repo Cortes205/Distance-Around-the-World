@@ -76,7 +76,9 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 		map = new Map();
 		
 		// DELETE AFTER DEBUG
-		earth = new Globe(map.getLocations());
+//		earth = new Globe(map.getLocations());
+//		map.paintWaypoints(true);
+//		map.setZoom(13);
 		
 		screen = new JLayeredPane();
 		screen.add(calc, JLayeredPane.PALETTE_LAYER);
@@ -161,6 +163,7 @@ public class App extends JFrame implements ComponentListener, ActionListener {
 				refresh();
 			}
 		} else if (e.getSource() == calc) {
+			map.paintWaypoints(true);
 			earth = new Globe(map.getLocations());
 		}
 	}
