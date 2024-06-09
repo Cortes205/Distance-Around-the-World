@@ -17,16 +17,15 @@ public class Globe {
 		locationOne = new GlobePoint(locations.get(0));
 		locationTwo = new GlobePoint(locations.get(1));
 		
-		locationOne.printDetails();
-		locationTwo.printDetails();
+		locationOne.setName("u");
+		locationTwo.setName("v");
 		
-		GlobePoint newCenter = new GlobePoint(0, 0, (locationOne.getZ() + locationTwo.getZ()) / 2);
-		GlobeVector centerToLocationOne = new GlobeVector(newCenter, locationOne);
-		GlobeVector centerToLocationTwo = new GlobeVector(newCenter, locationTwo);
+		GlobeVector uv = new GlobeVector(locationOne, locationTwo);
+		uv.setName("uv");
 		
-		
-		centerToLocationOne.printDetails();
-		centerToLocationTwo.printDetails();
+		System.out.println(locationOne);
+		System.out.println(locationTwo);
+		System.out.println(uv);
 	}
 	
 	public double getAngle(GlobeVector u, GlobeVector v) {

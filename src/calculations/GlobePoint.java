@@ -11,14 +11,16 @@ public class GlobePoint extends GlobeVector {
 	 * x^2 + y^2 + z^2 = 6371^2 */
 	public GlobePoint(GeoPosition point) {
 		super(
-				RADIUS * Math.cos(point.getLatitude()) * Math.cos(point.getLongitude()),
 				RADIUS * Math.cos(point.getLatitude()) * Math.sin(point.getLongitude()),
+				RADIUS * Math.cos(point.getLatitude()) * Math.cos(point.getLongitude()),
 				RADIUS * Math.sin(point.getLatitude())
 			);
+		super.setName("P");
 	}
 	
 	public GlobePoint(double x, double y, double z) {
 		super(x, y, z);
+		super.setName("P");
 	}
 	
 }
