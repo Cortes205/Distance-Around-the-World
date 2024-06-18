@@ -35,45 +35,43 @@ public class WebScraper implements ActionListener {
 	public WebScraper(Map map, String input) {
 		this.map = map;
 
-		try {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--headless=new");
-			options.addArguments("--deny-permission-prompts");
-			options.addArguments("--disable-popup-blocking");
-			page = new ChromeDriver(options);
-			page.get("https://www.gps-coordinates.net/");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless=new");
+		options.addArguments("--deny-permission-prompts");
+		options.addArguments("--disable-popup-blocking");
+		page = new ChromeDriver(options);
+		page.get("https://www.gps-coordinates.net/");
+
+		searchField = page.findElement(By.id("address"));
+		searchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+		searchField.clear();
+		searchField.sendKeys(input);
+
+		button = page.findElement(By.cssSelector(".btn.btn-primary"));
+		button.click();
 			
-			searchField = page.findElement(By.id("address"));
-			searchField.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
-			searchField.clear();
-			searchField.sendKeys(input);
-			
-			button = page.findElement(By.cssSelector(".btn.btn-primary"));
-			button.click();
-			
-			// Wait for site to update after button click
-			waitForSite = new Timer(0, this);
-			waitForSite.setInitialDelay(1250);
-			waitForSite.setRepeats(false);
-			waitForSite.start();
-		} catch (UnhandledAlertException e) {
-			page.quit();
-			JOptionPane.showMessageDialog(null, "Location could not be found");
-		}
+		// Wait for site to update after button click
+		waitForSite = new Timer(0, this);
+		waitForSite.setInitialDelay(1250);
+		waitForSite.setRepeats(false);
+		waitForSite.start();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == waitForSite) {
-			latitudeField = page.findElement(By.id("latitude"));
-			latitude = Double.parseDouble(latitudeField.getAttribute("value"));
-			
-			longitudeField = page.findElement(By.id("longitude"));
-			longitude = Double.parseDouble(longitudeField.getAttribute("value"));
-						
-			title = searchField.getAttribute("value");
-			map.setWaypoint(latitude, longitude, title);
-			
+			try {
+				latitudeField = page.findElement(By.id("latitude"));
+				latitude = Double.parseDouble(latitudeField.getAttribute("value"));
+				
+				longitudeField = page.findElement(By.id("longitude"));
+				longitude = Double.parseDouble(longitudeField.getAttribute("value"));
+							
+				title = searchField.getAttribute("value");
+				map.setWaypoint(latitude, longitude, title);
+			} catch (UnhandledAlertException exception) {
+				JOptionPane.showMessageDialog(null, "Location could not be found");
+			}
 			page.quit();
 		}
 	}
